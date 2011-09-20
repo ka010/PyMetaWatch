@@ -37,8 +37,11 @@ Modes
 Interactive mode (enables all buttons and maps them to shell commands defined in pywm.cfg)
 python pymw.py --<type> <device> interactive
 
-Command line mode (just sends an image)
-python pymw.py --<type> <device> <image.bmp>
+Command line mode (send and image)
+python pymw.py --<type> <device> --image <image.bmp>
+
+Command line mode (send text)
+python pymw.py --<type> <device> --text "some text"
 
 Test Mode (continuously sends a testbuffer)
 python pymw.py --<type> <device> testbuffer

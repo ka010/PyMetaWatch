@@ -218,9 +218,9 @@ class MetaWatch:
       import Image,ImageDraw,ImageFont
 
       image = Image.new("1",(96,96))
-      self.draw_word_wrap(image,text,1,1)
+      self.draw_word_wrap(image,text,1,40)
       image.save('tmp.bmp','BMP')
-      self.writeimage(mode,"tmp.bmp",live=True)  
+      self.writeimage(mode,"tmp.bmp",live=False)  
 
    def draw_word_wrap(self,img, text, xpos=0, ypos=0, max_width=95):
       import Image,ImageDraw,ImageFont
@@ -559,20 +559,39 @@ def main():
       
       print cmd + " " + arg
       
-      if len(sys.argv)==4:
+      if len(sys.argv)>=4:
           option = sys.argv[3]
           if option=='testbuffer':
               testMode(watchaddr,useSerial)
           elif option=='interactive':
               idleMode(watchaddr,useSerial)
-          else:
-              imgfile="010dev.bmp";
-              if len(sys.argv)>2:
-                 imgfile=sys.argv[2];
+          elif option=='--text':
+              if len(sys.argv)>4:
                  mw=MetaWatch(watchaddr,useSerial);
+                 text=sys.argv[4];
+                 
                  mw.clearbuffer(mode=mode,filled=True);
-                 mw.writeimage(mode=mode,image=imgfile,live=True);
                  mw.updatedisplay(mode)
+                 #mw.writeimage(mode=mode,image=imgfile,live=True);
+                 mw.writeText(mode,text=text)
+                 time.sleep(4)
+                 mw.updatedisplay(mode)
+                 
+                 mw.close()
+                 
+          elif option=='--image':
+              imgfile="010dev.bmp";
+              if len(sys.argv)>4:
+                 mw=MetaWatch(watchaddr,useSerial);
+                 text=sys.argv[4];
+
+                 mw.clearbuffer(mode=mode,filled=True);
+                 mw.updatedisplay(mode)
+                 mw.writeimage(mode=mode,image=imgfile,live=True);
+                 time.sleep(4)
+                 mw.updatedisplay(mode)
+                 
+                 mw.close()
   else:
       idleMode(watchaddr,useSerial)      
 
