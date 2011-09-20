@@ -1,6 +1,18 @@
-Original code by Traivs Goodspeed https://github.com/travisgoodspeed/PyMetaWatch
+Original code by Travis Goodspeed https://github.com/travisgoodspeed/PyMetaWatch
 
 Forked from Joe Hughes https://github.com/joehughes/PyMetaWatch 
+
+Supports:
+- bluetooth or tty connections 
+- auto-reconnect
+- control over all buttons
+- basic mapping of buttons to shell commands 
+- sending images
+- sending text 
+
+Python dependencies:
+- PIL (for sending images and text)
+- config 
 
 
 Usage:
