@@ -569,31 +569,12 @@ def main():
               imgfile="010dev.bmp";
               if len(sys.argv)>2:
                  imgfile=sys.argv[2];
+                 mw=MetaWatch(watchaddr,useSerial);
+                 mw.clearbuffer(mode=mode,filled=True);
                  mw.writeimage(mode=mode,image=imgfile,live=True);
+                 mw.updatedisplay(mode)
   else:
       idleMode(watchaddr,useSerial)      
-
-
-  
-
-  #mw.getBatteryVoltage()
-  #mw.configureWatchMode(mode=mode, displayTimeout=20, invertDisplay=False)
-
-  # First, clear the draw buffer to a filled template.
- # mw.clearbuffer(mode=mode,filled=True);
-
-
-
-  #mw.updatedisplay(mode)
-  #mw.writeText(mode,"Hello World  Hello World again and again and again and again and again and again...")
-
-#  #Push a bird into the buffer.
-#  try:
-#     mw.writeimage(mode=mode,image=imgfile,live=True);
-#  except ImportError:
-#     print "Error, Python Imaging Library (PIL) needs to be installed"
-#  except:
-#     print "Error loading image.  Probably not in the working directory.";
 
 
   

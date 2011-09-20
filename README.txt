@@ -1,20 +1,43 @@
-PyMetaWatch by Travis Goodspeed
+Original code by Traivs Goodspeed https://github.com/travisgoodspeed/PyMetaWatch
 
-This is a hastily written library for communicating with Fossil's
-MetaWatch over Bluetooth through py-bluez in Linux or Maemo.  Use
-an address of "none" to scan.  If no image is specified, the client
-should at least set the time.
-
-You are welcome to fork this in any way, under any license, for any
-reason, so long as a appropriate attribution is kept.
+Forked from Joe Hughes https://github.com/joehughes/PyMetaWatch 
 
 
 Usage:
-python pymw.py $btaddr $image
+
+Default (uses serial mode - drops into idle mode)
+python pymw.py --<type> <device> <mode>
+
+------------------------------------
+
+Device/Type Selection
+
+TTY Serial
+python pymw.py --serial </dev/tty.device> 
+
+Bluetooth
+python pymw.py --bt <watch-address> 
+
+-----------------------------------
+
+Modes
+
+Interactive mode (enables all buttons and maps them to shell commands defined in pywm.cfg)
+python pymw.py --<type> <device> interactive
+
+Command line mode (just sends an image)
+python pymw.py --<type> <device> <image.bmp>
+
+Test Mode (continuously sends a testbuffer)
+python pymw.py --<type> <device> testbuffer
+
+-----------------------------------
+
 
 These URLs are handy,
 http://www.dpin.de/~nils/metawatch
 http://www.metawatch.org/development.html
+http://retrovirus.com/incr/2011/09/metawatch-hacks-resources/
 
 Image sources:
 
